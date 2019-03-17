@@ -4,22 +4,14 @@
 #
 Name     : R-rcmdcheck
 Version  : 1.3.2
-Release  : 6
+Release  : 7
 URL      : https://cran.r-project.org/src/contrib/rcmdcheck_1.3.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/rcmdcheck_1.3.2.tar.gz
 Summary  : Run 'R CMD check' from 'R' and Capture Results
 Group    : Development/Tools
 License  : MIT
-Requires: R-callr
-Requires: R-cli
-Requires: R-desc
-Requires: R-pkgbuild
-Requires: R-prettyunits
-Requires: R-ps
-Requires: R-rprojroot
-Requires: R-sessioninfo
-Requires: R-withr
-Requires: R-xopen
+Requires: R-backports
+BuildRequires : R-backports
 BuildRequires : R-callr
 BuildRequires : R-cli
 BuildRequires : R-desc
@@ -33,7 +25,14 @@ BuildRequires : R-xopen
 BuildRequires : buildreq-R
 
 %description
-results of the individual checks.
+# rcmdcheck
+> Run R CMD check from R and Capture Results
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Linux Build Status](https://travis-ci.org/r-lib/rcmdcheck.svg?branch=master)](https://travis-ci.org/r-lib/rcmdcheck)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/github/r-lib/rcmdcheck?svg=true)](https://ci.appveyor.com/project/gaborcsardi/rcmdcheck)
+[![](http://www.r-pkg.org/badges/version/rcmdcheck)](http://www.r-pkg.org/pkg/rcmdcheck)
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/rcmdcheck)](http://www.r-pkg.org/pkg/rcmdcheck)
+[![Coverage Status](https://img.shields.io/codecov/c/github/r-lib/rcmdcheck/master.svg)](https://codecov.io/github/r-lib/rcmdcheck?branch=master)
 
 %prep
 %setup -q -c -n rcmdcheck
@@ -43,10 +42,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541883788
+export SOURCE_DATE_EPOCH=1552855853
 
 %install
-export SOURCE_DATE_EPOCH=1541883788
+export SOURCE_DATE_EPOCH=1552855853
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -82,8 +81,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library rcmdcheck|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  rcmdcheck || :
 
 
 %files
@@ -111,3 +109,55 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/rcmdcheck/html/00Index.html
 /usr/lib64/R/library/rcmdcheck/html/R.css
 /usr/lib64/R/library/rcmdcheck/rcmdcheck.gif
+/usr/lib64/R/library/rcmdcheck/tests/testthat.R
+/usr/lib64/R/library/rcmdcheck/tests/testthat/REDCapR-fail-ascii.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/REDCapR-fail.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/REDCapR-ok-ascii.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/REDCapR-ok.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/RSQLServer-install-ascii/00check.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/RSQLServer-install-ascii/00install.out
+/usr/lib64/R/library/rcmdcheck/tests/testthat/RSQLServer-install/00check.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/RSQLServer-install/00install.out
+/usr/lib64/R/library/rcmdcheck/tests/testthat/bad1/DESCRIPTION
+/usr/lib64/R/library/rcmdcheck/tests/testthat/bad1/NAMESPACE
+/usr/lib64/R/library/rcmdcheck/tests/testthat/bad1/R/package.R
+/usr/lib64/R/library/rcmdcheck/tests/testthat/bad1/man/foobar2.Rd
+/usr/lib64/R/library/rcmdcheck/tests/testthat/bad1/tests/testthat.R
+/usr/lib64/R/library/rcmdcheck/tests/testthat/bad1/tests/testthat/test-bad.R
+/usr/lib64/R/library/rcmdcheck/tests/testthat/bad1/vignettes/test.Rmd
+/usr/lib64/R/library/rcmdcheck/tests/testthat/bad2/DESCRIPTION
+/usr/lib64/R/library/rcmdcheck/tests/testthat/bad2/NAMESPACE
+/usr/lib64/R/library/rcmdcheck/tests/testthat/bad2/R/package.R
+/usr/lib64/R/library/rcmdcheck/tests/testthat/bikedata-ok-ascii.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/bikedata-ok.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/comparison-newly-failing-ascii.txt
+/usr/lib64/R/library/rcmdcheck/tests/testthat/comparison-newly-failing.txt
+/usr/lib64/R/library/rcmdcheck/tests/testthat/dataonderivatives-test-ascii/00check.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/dataonderivatives-test-ascii/00install.out
+/usr/lib64/R/library/rcmdcheck/tests/testthat/dataonderivatives-test-ascii/tests/testthat.Rout.fail
+/usr/lib64/R/library/rcmdcheck/tests/testthat/dataonderivatives-test/00check.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/dataonderivatives-test/00install.out
+/usr/lib64/R/library/rcmdcheck/tests/testthat/dataonderivatives-test/tests/testthat.Rout.fail
+/usr/lib64/R/library/rcmdcheck/tests/testthat/fixtures/badpackage_1.0.0.tar.gz
+/usr/lib64/R/library/rcmdcheck/tests/testthat/fixtures/run1.rds
+/usr/lib64/R/library/rcmdcheck/tests/testthat/fixtures/test-error-ascii.txt
+/usr/lib64/R/library/rcmdcheck/tests/testthat/fixtures/test-error.txt
+/usr/lib64/R/library/rcmdcheck/tests/testthat/helpers.R
+/usr/lib64/R/library/rcmdcheck/tests/testthat/libpath-1-27382.out
+/usr/lib64/R/library/rcmdcheck/tests/testthat/libpath-2-27382.out
+/usr/lib64/R/library/rcmdcheck/tests/testthat/minimal-ee-ascii.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/minimal-ee.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/minimal-ewn-ascii.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/minimal-ewn.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/minimal-ok-ascii.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/minimal-ok.log
+/usr/lib64/R/library/rcmdcheck/tests/testthat/parse-install-fail-ascii.txt
+/usr/lib64/R/library/rcmdcheck/tests/testthat/parse-install-fail.txt
+/usr/lib64/R/library/rcmdcheck/tests/testthat/parse-test-fail-ascii.txt
+/usr/lib64/R/library/rcmdcheck/tests/testthat/parse-test-fail.txt
+/usr/lib64/R/library/rcmdcheck/tests/testthat/test-auto_clean.R
+/usr/lib64/R/library/rcmdcheck/tests/testthat/test-build.R
+/usr/lib64/R/library/rcmdcheck/tests/testthat/test-comparison.R
+/usr/lib64/R/library/rcmdcheck/tests/testthat/test-errors.R
+/usr/lib64/R/library/rcmdcheck/tests/testthat/test-parse.R
+/usr/lib64/R/library/rcmdcheck/tests/testthat/test-rcmdcheck.R
