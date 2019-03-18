@@ -4,13 +4,12 @@
 #
 Name     : R-rcmdcheck
 Version  : 1.3.2
-Release  : 7
+Release  : 8
 URL      : https://cran.r-project.org/src/contrib/rcmdcheck_1.3.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/rcmdcheck_1.3.2.tar.gz
 Summary  : Run 'R CMD check' from 'R' and Capture Results
 Group    : Development/Tools
 License  : MIT
-Requires: R-backports
 BuildRequires : R-backports
 BuildRequires : R-callr
 BuildRequires : R-cli
@@ -42,10 +41,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552855853
+export SOURCE_DATE_EPOCH=1552870019
 
 %install
-export SOURCE_DATE_EPOCH=1552855853
+export SOURCE_DATE_EPOCH=1552870019
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
