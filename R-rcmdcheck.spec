@@ -4,36 +4,45 @@
 #
 Name     : R-rcmdcheck
 Version  : 1.3.3
-Release  : 12
+Release  : 13
 URL      : https://cran.r-project.org/src/contrib/rcmdcheck_1.3.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/rcmdcheck_1.3.3.tar.gz
 Summary  : Run 'R CMD check' from 'R' and Capture Results
 Group    : Development/Tools
 License  : MIT
+Requires: R-R6
+Requires: R-backports
 Requires: R-callr
+Requires: R-cli
+Requires: R-crayon
 Requires: R-desc
+Requires: R-digest
 Requires: R-pkgbuild
 Requires: R-prettyunits
 Requires: R-processx
 Requires: R-rprojroot
 Requires: R-sessioninfo
+Requires: R-withr
 Requires: R-xopen
+BuildRequires : R-R6
+BuildRequires : R-backports
 BuildRequires : R-callr
+BuildRequires : R-cli
+BuildRequires : R-crayon
 BuildRequires : R-desc
+BuildRequires : R-digest
 BuildRequires : R-pkgbuild
 BuildRequires : R-prettyunits
 BuildRequires : R-processx
 BuildRequires : R-rprojroot
 BuildRequires : R-sessioninfo
+BuildRequires : R-withr
 BuildRequires : R-xopen
 BuildRequires : buildreq-R
 
 %description
-Run R CMD check from R and Capture Results
-================
-# rcmdcheck
-> Run R CMD check from R and Capture
-Results
+results of the individual checks. Supports running checks in the
+    background, timeouts, pretty printing and comparing check results.
 
 %prep
 %setup -q -c -n rcmdcheck
@@ -42,13 +51,13 @@ Results
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1557249806
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562207771
 
 %install
-export SOURCE_DATE_EPOCH=1557249806
+export SOURCE_DATE_EPOCH=1562207771
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -77,7 +86,7 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
