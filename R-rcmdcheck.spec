@@ -4,7 +4,7 @@
 #
 Name     : R-rcmdcheck
 Version  : 1.3.3
-Release  : 19
+Release  : 20
 URL      : https://cran.r-project.org/src/contrib/rcmdcheck_1.3.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/rcmdcheck_1.3.3.tar.gz
 Summary  : Run 'R CMD check' from 'R' and Capture Results
@@ -23,7 +23,6 @@ Requires: R-sessioninfo
 Requires: R-withr
 Requires: R-xopen
 BuildRequires : R-R6
-BuildRequires : R-backports
 BuildRequires : R-callr
 BuildRequires : R-cli
 BuildRequires : R-crayon
@@ -31,38 +30,34 @@ BuildRequires : R-desc
 BuildRequires : R-digest
 BuildRequires : R-pkgbuild
 BuildRequires : R-prettyunits
-BuildRequires : R-processx
 BuildRequires : R-rprojroot
 BuildRequires : R-sessioninfo
 BuildRequires : R-withr
 BuildRequires : R-xopen
 BuildRequires : buildreq-R
-BuildRequires : util-linux
 
 %description
-Run R CMD check from R and Capture Results
-================
-# rcmdcheck
-> Run R CMD check from R and Capture
-Results
+results of the individual checks. Supports running checks in the
+    background, timeouts, pretty printing and comparing check results.
 
 %prep
 %setup -q -c -n rcmdcheck
+cd %{_builddir}/rcmdcheck
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571884502
+export SOURCE_DATE_EPOCH=1589586407
 
 %install
-export SOURCE_DATE_EPOCH=1571884502
+export SOURCE_DATE_EPOCH=1589586407
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
