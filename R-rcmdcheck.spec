@@ -4,7 +4,7 @@
 #
 Name     : R-rcmdcheck
 Version  : 1.4.0
-Release  : 37
+Release  : 38
 URL      : https://cran.r-project.org/src/contrib/rcmdcheck_1.4.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/rcmdcheck_1.4.0.tar.gz
 Summary  : Run 'R CMD check' from 'R' and Capture Results
